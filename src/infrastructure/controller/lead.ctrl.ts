@@ -19,7 +19,10 @@ class LeadCtrl {
       }
       console.log(err);
       res.send({ message: 'Hola ok' });
+      res.end();
     });
+    res.send({ message: 'Hola okay' });
+    res.end();
   };
 }
 

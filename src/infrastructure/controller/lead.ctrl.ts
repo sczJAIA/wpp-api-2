@@ -13,7 +13,6 @@ class LeadCtrl {
   public sendQr = async ({ body }: Request, res: Response) => {
     const { message, phone } = body;
     const path = `${process.cwd()}/tmp`;
-    // const qr = fs.readFileSync(`${path}/qr.svg`);
     res.sendFile(`${path}/qr.svg`);
   };
 }

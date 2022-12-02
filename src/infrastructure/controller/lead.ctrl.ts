@@ -12,17 +12,9 @@ class LeadCtrl {
     res.send(response);
   };
   public sendQr = async ( res: Response) => {
-    fs.readFile('../../../tmp/qr.svg', (err, data) => {
-      if (data) {
-        // res.sendFile(data);
-        console.log(data); 
-      }
-      console.log(err);
-      res.send({ message: 'Hola ok' });
-      res.end();
-    });
+    const qr = fs.readFileSync('../../../tmp/qr.svg');
+    console.log(qr);
     res.send({ message: 'Hola okay' });
-    res.end();
   };
 }
 

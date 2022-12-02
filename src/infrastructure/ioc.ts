@@ -14,12 +14,16 @@ const container = new ContainerBuilder();
 container.register("ws.transporter", WsTransporter);
 const wsTransporter = container.get("ws.transporter");
 
-container.register("db.repository", MockRepository);
-const dbRepository = container.get("db.repository");
+// container.register("db.repository", MockRepository);
+// const dbRepository = container.get("db.repository");
 
-container
+// container
+//   .register("lead.creator", LeadCreate)
+//   .addArgument([dbRepository, wsTransporter]);
+
+  container
   .register("lead.creator", LeadCreate)
-  .addArgument([dbRepository, wsTransporter]);
+  .addArgument(wsTransporter);
 
 const leadCreator = container.get("lead.creator");
 

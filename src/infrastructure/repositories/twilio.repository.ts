@@ -23,7 +23,6 @@ export default class TwilioService extends Twilio implements LeadExternal {
         const response = await this.messages.create(mapMsg);
         return response
     }catch(e){
-        console.log(e)
         return Promise.reject(e)
     }
   }

@@ -1,6 +1,5 @@
 import { Request, response, Response } from "express";
 import { LeadCreate } from "../../application/lead.create";
-import * as path from 'path';
 import * as fs from 'fs';
 
 class LeadCtrl {
@@ -11,10 +10,11 @@ class LeadCtrl {
     const response = await this.leadCreator.sendMessageAndSave({ message, phone })
     res.send(response);
   };
-  public sendQr = async ( res: Response) => {
-    const qr = fs.readFileSync('../../../tmp/qr.svg');
-    console.log(qr);
-    res.send({ message: 'Hola okay' });
+  public sendQr = async ({ body }: Request, res: Response) => {
+    const { message, phone } = body;
+    const path = `${process.cwd()}/tmp`;
+    const qr = fs.readFileSync(`${path}/qr.svg`);
+    res.send({ message, phone });
   };
 }
 
